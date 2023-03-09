@@ -1,3 +1,5 @@
+import guardado
+
 contactos = {}
 
 def mostrar_comandos():
@@ -13,6 +15,7 @@ def agregar_contacto():
     numero = input(" número: ")
     if (contactos.get(str(nombre)) == None):
         contactos[str(nombre)] = numero
+        guardado.guardar(contactos)
     else:
         print(nombre + " ya está en tus contactos")
 
@@ -21,6 +24,7 @@ def remover_contacto():
     if not (contactos.get(str(nombre)) == None):
         contactos.pop(str(nombre))
         print(nombre + " ha sido eliminado/a\n")
+        guardado.guardar(contactos)
     else:
         print(" "+nombre + " no está en tus contactos")
 
@@ -58,6 +62,8 @@ def ingresar_comando():
 print("\nIngrese 'ayuda' para lista de comandos y 'salir' para terminar")  
 
 comando = ingresar_comando()
+
+contactos = guardado.cargar()
 
 while not (comando.upper() == "SALIR"):
     procesar_comando(comando)

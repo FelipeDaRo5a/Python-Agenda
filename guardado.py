@@ -11,4 +11,4 @@ def cargar():
         f = open("contacts.json", "r") 
         return json.loads(f.read()) 
     else:
-        return None
+        return {}
