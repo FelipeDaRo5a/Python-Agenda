@@ -7,6 +7,7 @@ def mostrar_comandos():
     Agregar | Añadir contacto
     Remover | Eliminar contacto
     Mostrar | Mostrar contacto
+    Editar  | Editar contacto
     """
     print(ayuda)
 
@@ -48,6 +49,29 @@ def mostrar_contacto():
     else:
         print("no se encontró a " + nombre)
 
+def editar_contacto():
+    nombre = input(" Nombre: ")
+    if not (contactos.get(str(nombre)) == None):
+        numero = contactos.get(str(nombre))
+        print("\n "+ nombre + " " + numero)
+        nnombre = input(nombre + ": ")
+        nnumero = input(numero + ": ")
+
+        ncontacto = {}
+        if not (nnombre == nombre ) and not(nnombre == "" or nnombre == " "):
+            ncontacto = {str(nnombre) : numero}
+        else:
+            nnombre = nombre
+        if not (nnumero == numero ) and not(nnumero == "" or nnumero == " "):  
+            ncontacto[str(nnombre)] = nnumero;
+        else:
+            ncontacto[str(nnombre)] = numero;
+        contactos.pop(nombre)
+        contactos.update(ncontacto)
+        guardado.guardar(contactos)
+    else:
+        print("no se encontró a " + nombre)
+
 def procesar_comando(comando):
     if comando == "AYUDA":
         mostrar_comandos()
@@ -57,6 +81,8 @@ def procesar_comando(comando):
         remover_contacto()
     elif comando == "MOSTRAR":
         mostrar_contacto()
+    elif comando == "EDITAR":
+        editar_contacto()
     else: 
         print("Comando -"+ comando +"- no encontrado, ingrese 'ayuda' para obtener una lista de comandos\n")
 def ingresar_comando():
