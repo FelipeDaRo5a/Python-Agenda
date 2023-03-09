@@ -36,7 +36,7 @@ def mostrar_contacto():
         print("\n " +contactos.get(str(nombre)))
         print("------")
     else:
-        print("no se encontró el contacto especificado")
+        print("no se encontró a " + nombre)
 
 def procesar_comando(comando):
     if comando == "AYUDA":
@@ -48,7 +48,7 @@ def procesar_comando(comando):
     elif comando == "MOSTRAR":
         mostrar_contacto()
     else: 
-        print("Comando no encontrado, ingrese 'ayuda' para obtener una lista de comandos\n")
+        print("Comando -"+ comando +"- no encontrado, ingrese 'ayuda' para obtener una lista de comandos\n")
 def ingresar_comando():
     comando = input("\nIngrese su comando: ")
     comando = comando.upper()
