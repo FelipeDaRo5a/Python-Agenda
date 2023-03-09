@@ -11,8 +11,9 @@ def mostrar_comandos():
     print(ayuda)
 
 def agregar_contacto():
-    nombre = input(" nombre: ")
-    numero = input(" número: ")
+    print("\n")
+    nombre = input(" Nombre: ")
+    numero = input(" Número: ")
     if (contactos.get(str(nombre)) == None):
         contactos[str(nombre)] = numero
         guardado.guardar(contactos)
@@ -20,7 +21,8 @@ def agregar_contacto():
         print(nombre + " ya está en tus contactos")
 
 def remover_contacto():
-    nombre = input(" nombre: ")
+    print("\n")
+    nombre = input(" Nombre: ")
     if not (contactos.get(str(nombre)) == None):
         contactos.pop(str(nombre))
         print(nombre + " ha sido eliminado/a\n")
@@ -29,16 +31,20 @@ def remover_contacto():
         print(" "+nombre + " no está en tus contactos")
 
 def mostrar_contacto():
-    nombre = input(" nombre (deje vacío para mostrar todos): ")
+    print("\n")
+    nombre = input(" Nombre (deje vacío para mostrar todos): ")
     if(nombre == "" ):
-        print("\n------")
+        a = 0
+        print("\n---------------------")
         for i in contactos.items():
+            a +=1
             print(" " + i[0] + " - " + i[1])
-            print("----")
-        print("------")
+            if a <= (len(contactos.items()) - 1):
+                print("------")
+        print("---------------------")
     elif not (contactos.get(str(nombre)) == None):
         print("\n " +contactos.get(str(nombre)))
-        print("------")
+        print("--------")
     else:
         print("no se encontró a " + nombre)
 
